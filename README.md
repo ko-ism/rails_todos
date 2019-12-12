@@ -22,5 +22,11 @@ Ruby on railsのテスト備忘録
 + mysqlを動作させておくことで試験可能
 
 + ScaffoldでUser/Taskを作成
-+ UserはValidates
++ User/TaskはValidates
   app/models/user.rbにValidates設定
+  app/models/task.rbにValidates設定
++ アソシエーション設定実施
+  task.rbにてbelongs_to :user
+  user.rbにてhas_many :tasks, :dependent => :destroy
+  それに伴い色々修正
+  
