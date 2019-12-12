@@ -18,9 +18,9 @@
         <td><%= task.name %></td>
         <td><%= task.status %></td>
         <td><%= task.deadline %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_task_path(@user, task) %></td>
+        <td><%= link_to 'Edit', edit_user_task_path(@user, task) %></td>
+        <td><%= link_to 'Destroy', user_task_path(@user, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Task', new_task_path %>
+<%= link_to 'New Task', new_user_task_path(@user) %>
