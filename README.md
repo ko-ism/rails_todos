@@ -29,4 +29,7 @@ Ruby on railsのテスト備忘録
   task.rbにてbelongs_to :user
   user.rbにてhas_many :tasks, :dependent => :destroy
   それに伴い色々修正
-  
+
+### Tips
++ View側で```<%= debug(params) %>```記載すると、POSTなどで渡された値を可視化できる。Formで渡す際は、name keyが表示される。
+
