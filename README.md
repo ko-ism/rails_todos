@@ -32,4 +32,5 @@ Ruby on railsのテスト備忘録
 
 ### Tips
 + View側で```<%= debug(params) %>```記載すると、POSTなどで渡された値を可視化できる。Formで渡す際は、name keyが表示される。
-
++ form_for のViewに渡される変数がUser.newなどの新規の場合は、Submitするとcreateが呼び出され、User.firstなど既存の場合はUpdateが呼び出される
++ form_for/form_tagは非推奨で、Rails6以降はform_withを使う
