@@ -29,6 +29,19 @@
     <%= form.date_select :birthday %>
   </div>
 
+  <% if action_name.in? ["new", "create"] %>
+    <div class="field">
+      <%= form.label :password %><br />
+      <%= form.password_field :password %>
+    </div>
+    <div class="field">
+      <%= form.label :password_confirmation %><br />
+      <%= form.password_field :password_confirmation %>
+    </div>
+  <% end %>
+    
+      
+
   <div class="actions">
     <%= form.submit %>
   </div>

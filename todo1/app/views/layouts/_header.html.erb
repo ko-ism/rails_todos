@@ -1,0 +1,13 @@
+<div id="header">
+  <% if current_user %>
+    ようこそ <%= link_to current_user.name, current_user %> 様 |
+    <%= link_to "タスク一覧", user_tasks_path(current_user) %>
+    <%= link_to "ユーザ一覧", users_path %>
+    <%= link_to "ログアウト", logout_path %>
+  <% else %>
+    <%= current_user %>
+    <%= link_to "ログイン", login_path %>
+    <%= link_to "ユーザ登録", new_user_path %>
+  <% end %>
+    <%= link_to "ホーム", '/' %>
+</div>    

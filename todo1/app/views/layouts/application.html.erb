@@ -11,7 +11,10 @@
 
   <body>
   <div id="container">
+    <%= render "layouts/header" %>
     <%= yield %>
+    <%= debug(params) %>
+    <%= debug(session[:user_id]) %>
   </div>
   </body>
 </html>

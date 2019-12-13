@@ -15,7 +15,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = @user.tasks.build(:status => false)
   end
 
   # GET /tasks/1/edit
@@ -25,12 +25,12 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = @user.tasks.build(task_params)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render :show, status: :created, location: @task }
+        format.html { redirect_to [@user, @task], notice: 'Task was successfully created.' }
+        format.json { render :show, status: :created, location: [@user, @task] }
       else
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -43,8 +43,8 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @task }
+        format.html { redirect_to [@user, @task], notice: 'Task was successfully updated.' }
+        format.json { render :show, status: :ok, location: [@user, @task] }
       else
         format.html { render :edit }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -57,19 +57,19 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to user_tasks_url(@user), notice: 'Task was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_task
-      @task = @user.tasks.find(params[:id])
-    end
-
     def find_user
       @user = User.find(params[:user_id])
+    end
+
+    def set_task
+      @task = @user.tasks.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
